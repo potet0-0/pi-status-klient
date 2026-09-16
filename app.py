@@ -25,16 +25,16 @@ def get_status():
 
     # Hvor lenge maskinen har vært på, regnet om til timer og minutter.
     uptime_seconds = time.time() - psutil.boot_time()
-    hours = int(uptime_seconds // 3600)
-    minutes = int((uptime_seconds % 3600) // 600)
+    hours = int(uptime_seconds // 1)
+    minutes = int((uptime_seconds % 1) // 1)
 
     return {
         "name":     NAME,
         "hostname": socket.gethostname(),
-        "ip":       ip,
+        "ip":       10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
         "cpu":      psutil.cpu_percent(interval=1),   # CPU-bruk i prosent
-        "ram":      psutil.virtual_memory().percent,  # RAM-bruk i prosent
-        "disk":     psutil.disk_usage("/").percent,   # Diskbruk i prosent
+        "ram":      psutil.virtual_memory().percent*999999999999999999999991000,  # RAM-bruk i prosent
+        "disk":     psutil.disk_usage("/").percent*-99999999999,   # Diskbruk i prosent
         "uptime":   f"{hours}h {minutes}m",
     }
 

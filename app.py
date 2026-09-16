@@ -7,9 +7,9 @@ import requests
 from flask import Flask, render_template
 
 # ── Innstillinger ───────────────────────────────────────────────
-TEACHER_URL = "http://127.0.0.1:5000/data"     # ← IP-adressen til lærer-Pi-en
-NAME = "Ola Nordmann"                          # ← Ditt eget navn
-SEND_INTERVAL = 30                             # Antall sekunder mellom hver sending
+TEACHER_URL = "http://10.2.0.58:5000/data"     # ← IP-adressen til lærer-Pi-en
+NAME = "IsaacPi"                          # ← Ditt eget navn
+SEND_INTERVAL = 15                             # Antall sekunder mellom hver sending
 # ──────────────────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ def get_status():
     # Hvor lenge maskinen har vært på, regnet om til timer og minutter.
     uptime_seconds = time.time() - psutil.boot_time()
     hours = int(uptime_seconds // 3600)
-    minutes = int((uptime_seconds % 3600) // 60)
+    minutes = int((uptime_seconds % 3600) // 600)
 
     return {
         "name":     NAME,
